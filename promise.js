@@ -1,70 +1,74 @@
-const urlApi ="https://striveschool-api.herokuapp.com/api/deezer/search?q="
+ const urlApi ="https://striveschool-api.herokuapp.com/api/deezer/search?q="
 
-function fishingServer () {
-    fetch(urlApi+ "eminem")
-    .then ((res) => {
-        return res.json();
-    })
-    .then((res) => {
-        createHtml(res.data);
-    })
-    .fetch ((err) => {
-        console.log(err);
-    })
-}
+ function fishingServer () {
+     fetch(urlApi+ "eminem")
+     .then ((res) => {
+         return res.json();
+     })
+     .then((res) => {
+         createHtml(res.data);
+     })
+     .catch ((err) => {
+         console.log(err);
+     })
+ }
 
-function createHtml(songs){
-    const myHtmlDiv=document.getElementById("myDiv");
-    for (const song of songs) {
-        const songDiv=document.createElement('div');
-        const cardBodY=document.createElement('div');
-        
-        cardBodY.innerText=song.title;
-        cardBodY.classList.add('card-body');
-
-
-        songDiv.appendChild(cardBodY);
-        songDiv.classList.add('card');
-        songDiv.classList.add('col-md-3');
-        songDiv.classList.add('mx-2');
-        songDiv.classList.add('d-flex');
-        songDiv.classList.add('mb-2');
-        
-        myHtmlDiv.appendChild(songDiv);
-    }
-}
-
-fishingServer();
+ function createHtml(songs){
+     const myHtmlDiv=document.getElementById("myDiv");
+     for (const song of songs) {
+         const songDiv=document.createElement('div');
+         const cardBodY=document.createElement('div');      
+         cardBodY.innerText=song.title;
+         cardBodY.classList.add('card-body');
 
 
+         songDiv.appendChild(cardBodY);
+         songDiv.classList.add('card');
+         songDiv.classList.add('col-md-3');
+         songDiv.classList.add('mx-2');
+         songDiv.classList.add('d-flex');
+         songDiv.classList.add('mb-2');      
+         myHtmlDiv.appendChild(songDiv);
+     }
+ }
 
-/* // Creazione dell'elemento principale della card (div con classe "card")
-var card = document.createElement("div");
-card.classList.add("card");
+ 
 
-// Creazione dell'elemento per il corpo della card (div con classe "card-body")
-var cardBody = document.createElement("div");
-cardBody.classList.add("card-body");
+ fishingServer();
 
-// Creazione dell'elemento per il titolo della card (h5 con classe "card-title")
-var cardTitle = document.createElement("h5");
-cardTitle.classList.add("card-title");
-cardTitle.textContent = "Titolo della card";
+// const musicData = (id)=> {
+//     let promise= new Promise((resolve,reject)=> {
+//         let request =  fetch('https://striveschool-api.herokuapp.com/api/deezer/search?q=' + id, { method: 'GET' });
+//         setTimeout(()=>{
+//             resolve(request);
+//             reject("error");
+//         },1000);
+//  });
+//     return promise;
+// }
 
-// Creazione dell'elemento per il testo della card (p con classe "card-text")
-var cardText = document.createElement("p");
-cardText.classList.add("card-text");
-cardText.textContent = "Testo della card";
 
-// Aggiunta dell'elemento del titolo come figlio del corpo della card
-cardBody.appendChild(cardTitle);
+// musicData("eminem")
+// .then((response)=> {response.json().then((data)=> {getAlbum(data, "eminem")})})
+// .catch((error)=> {console.log(error)});
 
-// Aggiunta dell'elemento del testo come figlio del corpo della card
-cardBody.appendChild(cardText);
+// function getAlbum(datas, name) {
 
-// Aggiunta del corpo della card come figlio della card principale
-card.appendChild(cardBody);
+//     let albums = document.getElementById('eminem');
+//     let albumsData = datas.data;
 
-// Aggiunta della card al documento HTML (nel tuo elemento di destinazione desiderato)
-var targetElement = document.getElementById("nome-del-tuo-elemento-di-destinazione");
-targetElement.appendChild(card); */
+//     for (let i = 0; i < 4; i++) {
+
+//         let dadDiv = document.createElement("div");
+//         albums.appendChild(dadDiv);
+
+//         let albumTitle = document.createElement("h4");
+//         albumTitle.innerText = albumsData[i].title;
+//         dadDiv.appendChild(albumTitle);
+
+//         let albumImg = document.createElement("img");
+//         albumImg.src = albumsData[i].album.cover_medium;
+//         dadDiv.appendChild(albumImg);
+
+//     }
+// }
